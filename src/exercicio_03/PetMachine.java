@@ -83,7 +83,7 @@ public class PetMachine {
 	
 	// VERIFICAR SE TEM PET NO BANHO
 	public void inUse() {
-		
+		if (this.pet == null) System.out.println("A máquina de banho está vazia!");
 	}
 	
 	

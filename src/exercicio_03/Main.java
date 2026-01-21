@@ -10,7 +10,7 @@ public class Main {
 		machine01.refillShampoo();
 		machine01.checkWater();
 		machine01.checkShampoo();
-		
+		machine01.inUse();
 	}
 
 }
