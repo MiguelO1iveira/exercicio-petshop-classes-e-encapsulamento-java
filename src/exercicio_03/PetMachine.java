@@ -21,21 +21,29 @@ public class PetMachine {
 	}
 
 	// COLOCAR NO CHUVEIRO
-	public void takeAShower(Pet pet) {
-		if (this.pet == null && this.water >= 10 && this.shampoo >= 2) {
+	public void putInTheShower(Pet pet) {
+		if (this.pet == null) {
 			this.pet = pet;
-			pet.setClean(true);
-			System.out.println("O pet " + this.pet.getName() + " agora está limpo!");
-			// GASTANDO 10 LITROS COM O BANHO
-			this.water = this.water - 10;
-			this.shampoo = this.shampoo - 2;
+			System.out.println("O pet " + this.pet.getName() + " foi colocado(a) na máquina de banho!");
 			
-		} else if (this.pet != null) {
-			System.out.println("Retire o " + this.pet.getName() + " para colocar o próximo pet.");
-		} else if (this.water < 10) {
-			System.out.println("Abasteça no mínimo 10 litros para dar banho no Pet.");
-		} else {
-			System.out.println("Abasteça no mínimo 2 litros de shampoo para dar banho no Pet.");
+		} else System.out.println("Retire o " + this.pet.getName() + " para colocar o próximo pet.");
+	}
+	
+	// TIRAR DO CHUVEIRO
+	public void removeFromTheShower(Pet pet) {
+		if (this.pet != null) {
+			System.out.println("O pet " + this.pet.getName() + " foi removido da máquina de banho!");
+			this.pet = null;
+		} else System.out.println("A máquina de banho está vazia!");
+	}
+	
+	// DAR BANHO
+	public void bathe() {
+		if (this.pet != null && this.water >= 10 && this.shampoo >= 2) {
+			this.pet.setClean(true);
+			this.water -= 10;
+			this.shampoo -= 2;
+			System.out.println("\u001B[32mBanho finalizado, agora " + this.pet.getName() + " está limpo!\u001B[0m");
 		}
 	}
 	
@@ -47,7 +55,7 @@ public class PetMachine {
 		else {
 			 // COLOCAR 2 LITROS DE ÁGUA NO RESERVATÓRIO
 			 this.water = this.water + 2;
-			 System.out.println("\u001B[32mAbastecendo com mais 2 litros de água...\u001B[0m");
+			 System.out.println("Abastecendo com mais 2 litros de água...");
 		 }
 	}
 	
@@ -59,7 +67,7 @@ public class PetMachine {
 		else {
 			// COLOCAR 2 LITROS DE SHAMPOO NO RESERVATÓRIO
 			this.shampoo = this.shampoo + 2;
-			System.out.println("\u001B[32mAbastecendo com mais 2 litros de shampoo...\u001B[0m");
+			System.out.println("Abastecendo com mais 2 litros de shampoo...");
 		}
 	}
 	
@@ -77,13 +85,14 @@ public class PetMachine {
 		switch(this.shampoo) {
 			case 10 -> System.out.println("O reservatório de shampoo está completo!");
 			case 0 -> System.out.println("O reservatório de shampoo está vazio!");
-			default -> System.out.println("\u001B[1mNível de shampoo: \u001B[0m" + this.water + " Litros");
+			default -> System.out.println("\u001B[1mNível de shampoo: \u001B[0m" + this.shampoo + " Litros");
 		}
 	}
 	
 	// VERIFICAR SE TEM PET NO BANHO
 	public void inUse() {
 		if (this.pet == null) System.out.println("A máquina de banho está vazia!");
+		else System.out.println("Máquina ocupada pelo(a) " + pet.getName());
 	}
 	
 	
