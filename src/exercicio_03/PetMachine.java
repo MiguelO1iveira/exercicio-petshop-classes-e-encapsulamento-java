@@ -22,10 +22,11 @@ public class PetMachine {
 
 	// COLOCAR NO CHUVEIRO
 	public void putInTheShower(Pet pet) {
-		if (this.pet == null) {
+		if (this.pet == null && this.clean) {
 			this.pet = pet;
 			System.out.println("O pet " + this.pet.getName() + " foi colocado(a) na máquina de banho!");
-			
+		} else if(!this.clean) {		
+			System.out.println("Limpe a máquina antes de colocar o próximo pet!");
 		} else System.out.println("Retire o " + this.pet.getName() + " para colocar o próximo pet.");
 	}
 	
@@ -33,6 +34,12 @@ public class PetMachine {
 	public void removeFromTheShower(Pet pet) {
 		if (this.pet != null) {
 			System.out.println("O pet " + this.pet.getName() + " foi removido da máquina de banho!");
+			// CONFERIR SE O PET TOMOU O BANHO
+			if (!this.pet.isClean()) {
+				System.out.println("O pet foi removido sem dar banho, por isso agora a máquina está suja!");
+				this.clean = false;
+			}
+			
 			this.pet = null;
 		} else System.out.println("A máquina de banho está vazia!");
 	}

@@ -1,30 +1,40 @@
 package exercicio_03;
 
-public class Main {
+import java.util.Scanner;
 
+public class Main {
+	
+	
+	
+	
 	public static void main(String[] args) {
-		Pet dog = new Pet("Bob");
-		Pet cat = new Pet("Simba");
-		PetMachine machine01 = new PetMachine();
-		
-		for (int i = 1; i <= 15; i++) {
-			machine01.waterSupply();
-		}
-		for (int i = 1; i <= 5; i++) {
-			machine01.refillShampoo();
-		}
-		
-		machine01.removeFromTheShower(dog);
-		machine01.putInTheShower(dog);
-		machine01.removeFromTheShower(dog);
-		machine01.putInTheShower(cat);
-		
-		
-		machine01.inUse();
-		machine01.bathe();
-		machine01.removeFromTheShower(dog);
-		machine01.checkWater();
-		machine01.checkShampoo();
+		menu();
 	}
+	
+	
+	private static int menu() {
+		Scanner scanner = new Scanner(System.in);
+		int op;
+		
+		
+		System.out.println("+=============================+");
+		System.out.println("|   PETSHOP MIGUEL OLIVEIRA   |");
+		System.out.println("+=============================+");
+		System.out.println("| [1] Colocar Pet na Máquina  |");
+		System.out.println("| [2] Remover Pet da Máquina  |");
+		System.out.println("| [3] Dar Banho               |");
+		System.out.println("| [4] Abastecer com água      |");
+		System.out.println("| [5] Abastecer com Shampoo   |");
+		System.out.println("| [6] Nível de Água           |");
+		System.out.println("| [7] Nível de Shampoo        |");
+		System.out.println("| [8] Ver quem está na máquna |");
+		System.out.println("+=============================+");
+		System.out.print(">>> ");
+		op = Integer.parseInt(scanner.nextLine());
+		
+		scanner.close();
+		return op;
+	}
+	
 
 }
