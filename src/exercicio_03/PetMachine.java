@@ -51,7 +51,8 @@ public class PetMachine {
 			this.water -= 10;
 			this.shampoo -= 2;
 			System.out.println("\u001B[32mBanho finalizado, agora " + this.pet.getName() + " está limpo!\u001B[0m");
-		}
+		} else if (this.water < 10) System.out.println("Não tem água o suficiente para dar banho no pet!");
+		else System.out.println("Não tem shampoo o suficiente para dar banho no pet!");
 	}
 	
 	// ABASTECER COM ÁGUA
@@ -102,6 +103,15 @@ public class PetMachine {
 		else System.out.println("Máquina ocupada pelo(a) " + pet.getName());
 	}
 	
-	
-	
+	// LIMPAR A MÁQUINA
+	public void cleanMachine() {
+		if (!this.isClean() && this.water >= 3 && this.shampoo >= 1) {
+			System.out.println("Limpando a máquina.\nForam gastos 3 litros de água e 1 litro de shampoo");
+			this.water -= 3;
+			this.shampoo -= 1;
+			this.clean = true;
+		} else if (this.isClean()) System.out.println("A máquina já está limpa!");
+			else if (this.water < 3) System.out.println("Quantidade de água insuficiente. Abasteça no mínimo 3 litros para limpar!");
+			else System.out.println("Quantidade de shampoo insuficiente. Abasteça no mínimo 1 litro para limpar");
+	}
 }
