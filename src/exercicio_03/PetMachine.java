@@ -25,9 +25,10 @@ public class PetMachine {
 		if (this.pet == null && this.clean) {
 			this.pet = pet;
 			System.out.println("O pet " + this.pet.getName() + " foi colocado(a) na máquina de banho!");
-		} else if(!this.clean) {		
-			System.out.println("Limpe a máquina antes de colocar o próximo pet!");
-		} else System.out.println("Retire o " + this.pet.getName() + " para colocar o próximo pet.");
+			
+		} else if(!this.clean) System.out.println("Limpe a máquina antes de colocar o próximo pet!");
+		
+		else System.out.println("Retire o " + this.pet.getName() + " para colocar o próximo pet.");
 	}
 	
 	// TIRAR DO CHUVEIRO
@@ -58,7 +59,7 @@ public class PetMachine {
 	// ABASTECER COM ÁGUA
 	public void waterSupply() {
 		// VERIFICAR O NÍVEL DO RESERVATÓRIO ANTES DE ABASTECER
-		if (this.water == 30) System.out.println("O reservatório de água cheio!");
+		if (this.water == 30) System.out.println("O reservatório de água está cheio!");
 		else if(this.water + 2 > 30) System.out.println("\u001B[31mNão é possível abastecer com água no momento, porque excederá o limite do reservatório!\u001B[0m");
 		else {
 			 // COLOCAR 2 LITROS DE ÁGUA NO RESERVATÓRIO
