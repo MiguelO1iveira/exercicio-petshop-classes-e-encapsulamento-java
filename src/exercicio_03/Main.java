@@ -48,6 +48,7 @@ public class Main {
 					case 7 -> machine01.checkShampoo();
 					case 8 -> machine01.inUse();
 					case 9 -> machine01.cleanMachine();
+					default -> System.out.println("Opção inválida!");
 				}
 				pause(scanner);
 				
