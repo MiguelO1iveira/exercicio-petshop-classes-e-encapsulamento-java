@@ -35,20 +35,40 @@ public class Main {
 				option = Integer.parseInt(scanner.nextLine()); // VALOR DA ESCOLHA DO UTILIZADOR
 				
 				switch(option) {
+					// ENCERRAR
 					case 0 -> System.out.println("Encerrando...");
-					// ESTOU COLOCANDO O PET QUE SERÁ REGISTRADO NO MÉTODO REGISTER PET NA MÁQUINA
+					
+					// ESTOU COLOCANDO O PET NA MÁQUINA
 					case 1 -> machine01.putInTheShower(scanner);
+					
+					// REMOVENDO O PET DA MÁQUINA
 					case 2 -> machine01.removeFromTheShower();
+					
+					// DAR BANHO
 					case 3 -> machine01.bathe();
+					
+					// ABASTECENDO DE ÁGUA
 					case 4 -> machine01.waterSupply();
+					
+					// ABASTECENDO DE SHAMPOO
 					case 5 -> machine01.refillShampoo();
+					
+					// CHECKANDO NÍVEL DE ÁGUA
 					case 6 -> machine01.checkWater();
+					
+					// CHECKANDO NÍVEL DE SHAMPOO
 					case 7 -> machine01.checkShampoo();
+					
+					// QUEM ESTÁ USANDO A MÁQUINA
 					case 8 -> {
 						if(machine01.inUse()) System.out.println("O pet " + machine01.getPet().getName() + " está na máquina de banho!");
 						else System.out.println("A máquina está vazia.");
 					}
+					
+					// LIMPANDO A MÁQUINA
 					case 9 -> machine01.cleanMachine();
+					
+					// CASO DIGITE UM NÚMERO QUE NÃO É VÁLIDo
 					default -> System.out.println("Opção inválida!");
 				}
 				pause(scanner);
