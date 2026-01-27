@@ -5,15 +5,12 @@ import java.util.Scanner;
 public class Main {
 	
 	public static void main(String[] args) {
-		
-		
 		menu();
 		
 	}
 	
-	
+	// MENU DE OPÇÕES
 	private static void menu() {
-		Pet pet = new Pet("Bob");
 		PetMachine machine01 = new PetMachine();
 		
 		int option;
@@ -35,18 +32,22 @@ public class Main {
 				System.out.println("| [0] Sair                    |");
 				System.out.println("+=============================+");
 				System.out.print(">>> ");
-				option = Integer.parseInt(scanner.nextLine());
+				option = Integer.parseInt(scanner.nextLine()); // VALOR DA ESCOLHA DO UTILIZADOR
 				
 				switch(option) {
 					case 0 -> System.out.println("Encerrando...");
-					case 1 -> machine01.putInTheShower(pet);
-					case 2 -> machine01.removeFromTheShower(pet);
+					// ESTOU COLOCANDO O PET QUE SERÁ REGISTRADO NO MÉTODO REGISTER PET NA MÁQUINA
+					case 1 -> machine01.putInTheShower(scanner);
+					case 2 -> machine01.removeFromTheShower();
 					case 3 -> machine01.bathe();
 					case 4 -> machine01.waterSupply();
 					case 5 -> machine01.refillShampoo();
 					case 6 -> machine01.checkWater();
 					case 7 -> machine01.checkShampoo();
-					case 8 -> machine01.inUse();
+					case 8 -> {
+						if(machine01.inUse()) System.out.println("O pet " + machine01.getPet().getName() + " está na máquina de banho!");
+						else System.out.println("A máquina está vazia.");
+					}
 					case 9 -> machine01.cleanMachine();
 					default -> System.out.println("Opção inválida!");
 				}
@@ -58,6 +59,7 @@ public class Main {
 		
 	} // MENU()
 	
+	// FUNÇÃO PARA DEIXAR UMA PAUSA COM INTUITO DE VER OS RESULTADOS
 	public static void pause(Scanner scanner) {
 		
 		scanner.nextLine();
@@ -65,6 +67,8 @@ public class Main {
 		 for (int i = 0; i < 30; i++) {
 			    System.out.println();
 			}
-	}
+	} 
+	
+	
 	
 } //MAIN

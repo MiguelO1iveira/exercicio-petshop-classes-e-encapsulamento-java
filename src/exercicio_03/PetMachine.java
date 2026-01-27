@@ -1,15 +1,17 @@
 package exercicio_03;
 
+import java.util.Scanner;
+
 public class PetMachine {
 	
 	// ESTADO LIMPO OU SUJO
-	private boolean clean;
+	private boolean clean = true;
 	
 	// QUANTIDADE DE ÁGUA
-	private int water;
+	private int water = 30;
 	
 	// QUANTIDADE DE SHAMPOO
-	private int shampoo;
+	private int shampoo = 10;
 	
 	// PET QUE ESTÁ DENTRO DA MÁQUINA
 	private Pet pet;
@@ -19,20 +21,37 @@ public class PetMachine {
 	public boolean isClean() {
 		return clean;
 	}
+	public Pet getPet() {
+		return pet;
+	}
+	
+	// MÉTODO PARA REGISTRAR UM PET NOVO
 
-	// COLOCAR NO CHUVEIRO
-	public void putInTheShower(Pet pet) {
+	// COLOCAR NA MÁQUINA
+	public void putInTheShower(Scanner scanner) {
+		
 		if (this.pet == null && this.clean) {
+			String name = "";
+			while (name.isEmpty()) { // GARANTIR QUE O UTILIZADOR COLOQUE UM NOME VÁLIDO
+				System.out.println("\nInforme o nome do pet: ");
+				System.out.print(">>> ");
+				name = scanner.nextLine();
+			}
+
+			
+			
+			Pet pet = new Pet(name);
 			this.pet = pet;
+			
 			System.out.println("O pet " + this.pet.getName() + " foi colocado(a) na máquina de banho!");
 			
 		} else if(!this.clean) System.out.println("Limpe a máquina antes de colocar o próximo pet!");
 		
-		else System.out.println("Retire o " + this.pet.getName() + " para colocar o próximo pet.");
+		else System.out.println("Retire o(a) " + this.pet.getName() + " para colocar o próximo pet.");
 	}
 	
 	// TIRAR DO CHUVEIRO
-	public void removeFromTheShower(Pet pet) {
+	public void removeFromTheShower() {
 		if (this.pet != null) {
 			System.out.println("O pet " + this.pet.getName() + " foi removido da máquina de banho!");
 			// CONFERIR SE O PET TOMOU O BANHO
@@ -47,12 +66,13 @@ public class PetMachine {
 	
 	// DAR BANHO
 	public void bathe() {
-		if (this.pet != null && this.water >= 10 && this.shampoo >= 2) {
+		if (this.pet != null && this.water >= 10 && this.shampoo >= 2 && !this.pet.isClean()) {
 			this.pet.setClean(true);
 			this.water -= 10;
 			this.shampoo -= 2;
 			System.out.println("\u001B[32mBanho finalizado, agora " + this.pet.getName() + " está limpo!\u001B[0m");
-		} else if (this.water < 10) System.out.println("Não tem água o suficiente para dar banho no pet!");
+		} else if (this.pet.isClean()) System.out.println("O pet já tomou banho!");  
+		else if (this.water < 10) System.out.println("Não tem água o suficiente para dar banho no pet!");
 		else System.out.println("Não tem shampoo o suficiente para dar banho no pet!");
 	}
 	
@@ -99,9 +119,8 @@ public class PetMachine {
 	}
 	
 	// VERIFICAR SE TEM PET NO BANHO
-	public void inUse() {
-		if (this.pet == null) System.out.println("A máquina de banho está vazia!");
-		else System.out.println("Máquina ocupada pelo(a) " + pet.getName());
+	public boolean inUse() {
+		return pet != null;
 	}
 	
 	// LIMPAR A MÁQUINA
