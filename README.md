@@ -78,8 +78,8 @@ git clone https://github.com/MiguelO1iveira/exercicio-petshop-classes-e-encapsul
 cd exercicio-petshop-classes-e-encapsulamento-java
 ```
 ```bash
-javac src/Main.java
+javac -d bin src\exercicio_03\*.java
 ```
 ```bash
-java -cp src Main
+java -cp bin exercicio_03.Main
 ```
