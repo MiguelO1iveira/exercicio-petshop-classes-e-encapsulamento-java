@@ -66,14 +66,31 @@ public class PetMachine {
 	
 	// DAR BANHO
 	public void bathe() {
-		if (this.pet != null && this.water >= 10 && this.shampoo >= 2 && !this.pet.isClean()) {
-			this.pet.setClean(true);
-			this.water -= 10;
-			this.shampoo -= 2;
-			System.out.println("\u001B[32mBanho finalizado, agora " + this.pet.getName() + " está limpo!\u001B[0m");
-		} else if (this.pet.isClean()) System.out.println("O pet já tomou banho!");  
-		else if (this.water < 10) System.out.println("Não tem água o suficiente para dar banho no pet!");
-		else System.out.println("Não tem shampoo o suficiente para dar banho no pet!");
+		 if (this.pet == null) {
+		        System.out.println("Não há pet na máquina!");
+		        return;
+		    }
+
+		    if (this.pet.isClean()) {
+		        System.out.println("O pet já está limpo!");
+		        return;
+		    }
+
+		    if (this.water < 10) {
+		        System.out.println("Água insuficiente!");
+		        return;
+		    }
+
+		    if (this.shampoo < 2) {
+		        System.out.println("Shampoo insuficiente!");
+		        return;
+		    }
+
+		    this.pet.setClean(true);
+		    this.water -= 10;
+		    this.shampoo -= 2;
+
+		    System.out.println("Banho finalizado!");
 	}
 	
 	// ABASTECER COM ÁGUA

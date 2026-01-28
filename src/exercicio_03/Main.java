@@ -68,7 +68,7 @@ public class Main {
 					// LIMPANDO A MÁQUINA
 					case 9 -> machine01.cleanMachine();
 					
-					// CASO DIGITE UM NÚMERO QUE NÃO É VÁLIDo
+					// CASO DIGITE UM NÚMERO QUE NÃO É VÁLIDO
 					default -> System.out.println("Opção inválida!");
 				}
 				pause(scanner);
