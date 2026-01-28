@@ -4,7 +4,7 @@ Este projeto foi desenvolvido como um exercício prático em **Java**, com o obj
 
 O exercício faz parte dos estudos realizados no curso:
 
-📘 **Java e a arte da Abstração com Classes e Encapsulamento**
+📘 **Java e a arte da Abstração com Classes e Encapsulamento realizado na plataforma da DIO**
 
 ---
 
